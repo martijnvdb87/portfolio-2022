@@ -80,7 +80,8 @@ const play = () => {
     :style="`width: ${width}px;`"
     :class="[
       'video-player',
-      {'video-player--started': started}
+      {'video-player--started': started},
+      videoProvider ? `video-player--${videoProvider}`: ''
     ]"
     @click="play"
   >
@@ -92,10 +93,11 @@ const play = () => {
       class="video-player__play-overlay"
     >
       <span class="video-player__play-button">
-        <Icon name="play" class="text-white w-12 h-12" />
+        <Icon name="play" class="text-white w-10 h-10" />
       </span>
     </div>
     <img
+      v-if="videoThumbnail"
       class="video-player__thumbnail"
       :src="videoThumbnail"
     />
@@ -122,6 +124,18 @@ const play = () => {
       @apply opacity-0;
     }
   }
+
+  &--youtube {
+    .video-player__play-button {
+      @apply bg-red-500;
+    }
+  }
+
+  &--vimeo {
+    .video-player__play-button {
+      @apply bg-sky-500;
+    }
+  }
 }
 
 .video-player__player {
@@ -133,12 +147,12 @@ const play = () => {
 }
 
 .video-player__play-button {
-  @apply flex items-center justify-center w-20 h-20 bg-red-500 text-white rounded-full transition-all shadow-xl;
+  @apply flex items-center justify-center w-16 h-16 bg-black text-white rounded-full transition-all shadow-xl;
 }
 
 .video-player__player:hover {
   .video-player__play-button {
-    @apply scale-110;
+    @apply scale-125;
   }
 }
 
