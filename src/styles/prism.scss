@@ -1,0 +1,85 @@
+/* PrismJS 1.26.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+bash+csharp+dart+docker+git+go+graphql+http+ignore+javadoclike+json+json5+jsonp+jsstacktrace+js-templates+kotlin+markdown+markup-templating+mongodb+nginx+php+phpdoc+php-extras+powershell+python+jsx+tsx+regex+rust+sass+scss+sql+twig+typescript+wasm+xml-doc+yaml&plugins=line-numbers+custom-class */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+.code-block {
+    .code-block__token {
+        &.code-block__comment,
+        &.code-block__prolog,
+        &.code-block__doctype,
+        &.code-block__cdata {
+            @apply text-gray-500;
+        }
+
+        &.code-block__punctuation {
+            @apply text-gray-300;
+        }
+        
+        &.code-block__parameter {
+            @apply text-red-400;
+        }
+
+        &.code-block__namespace {
+            opacity: 0.7;
+        }
+        
+        &.code-block__property,
+        &.code-block__tag,
+        &.code-block__boolean,
+        &.code-block__number,
+        &.code-block__constant,
+        &.code-block__symbol,
+        &.code-block__deleted {
+            @apply text-red-400;
+        }
+        
+        &.code-block__selector,
+        &.code-block__attr-name,
+        &.code-block__string,
+        &.code-block__char,
+        &.code-block__builtin,
+        &.code-block__inserted {
+            @apply text-green-500;
+        }
+
+        &.code-block__operator,
+        &.code-block__entity,
+        &.code-block__url {
+            @apply text-cyan-500;
+        }
+    
+        &.code-block__atrule,
+        &.code-block__attr-value,
+        &.code-block__keyword {
+            @apply text-purple-400;
+        }
+        
+        &.code-block__function,
+        &.code-block__class-name {
+            @apply text-red-400;
+        }
+        
+        &.code-block__regex,
+        &.code-block__important,
+        &.code-block__variable {
+            @apply text-orange-300;
+        }
+        
+        &.code-block__important,
+        &.code-block__bold {
+            font-weight: bold;
+        }
+        &.code-block__italic {
+            font-style: italic;
+        }
+        
+        &.code-block__entity {
+            cursor: help;
+        }
+    }
+}
+
