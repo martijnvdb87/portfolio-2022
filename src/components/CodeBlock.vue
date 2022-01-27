@@ -1,13 +1,9 @@
 <script setup lang="ts">
-//import Prism from 'prismjs';
-
-
 // PrismJS
 import './../scripts/prism.js';
 import './../styles/prism.scss';
 
 import { ref, onMounted } from 'vue';
-import { Languages } from 'prismjs';
 
 window.Prism.plugins.customClass.prefix('code-block__');
 
@@ -45,7 +41,7 @@ onMounted(() => {
 
     inputHtml = filtered.reverse().join('\n');
 
-    html.value = window.Prism.highlight(inputHtml, window.Prism.languages[(props.lang as keyof Languages)], (props.lang as string));
+    html.value = window.Prism.highlight(inputHtml, window.Prism.languages[(props.lang as keyof any)], (props.lang as string));
   }
 });
 
