@@ -1,14 +1,10 @@
 <script setup lang="ts">
+import Menu from './components/Menu.vue';
 </script>
 
 <template>
   <div>
-    <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
-    <router-link to="/blog">Blog</router-link>
-    <router-link to="/snippets">Snippets</router-link>
-    <router-link to="/projects">Projects</router-link>
-
+    <Menu />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />
