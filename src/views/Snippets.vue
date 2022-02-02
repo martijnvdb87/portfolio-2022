@@ -13,6 +13,7 @@ const filteredSnippets = computed(() => search.value == "" ? snippets : fuzzysor
   <input type="text" v-model="search">
   <ol>
     <li v-for="(snippet, index) in filteredSnippets" :v-key="`snippet-${index}`">
+      {{snippet.id}}
       {{snippet.title}}
     </li>
   </ol>
