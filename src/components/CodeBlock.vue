@@ -72,11 +72,11 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
     v-html="html"
     class="code-block__output"
     ref="renderedCode"
-    @click="copyToClipboard"
   />
   <button
     type="button"
     class="code-block__copy-to-clipboard"
+    @click="copyToClipboard"
   >
     <Icon name="copy" />
   </button>
