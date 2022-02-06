@@ -5,7 +5,7 @@ import './../styles/prism.scss';
 
 import Icon from "./Icon.vue";
 
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUpdated } from 'vue';
 
 window.Prism.plugins.customClass.prefix('code-block__');
 
@@ -17,14 +17,34 @@ const props = defineProps({
     type: String,
     required: false,
     default: 'html'
+  },
+
+  code: {
+    type: String,
+    required: false
   }
 });
 
 
 onMounted(() => {
-  if(input.value) {
-    let inputHtml: string = ((input.value as HTMLElement).children[0] as HTMLTextAreaElement).value;
+  renderCode();
+});
 
+onUpdated(() => {
+  renderCode();
+});
+
+const renderCode = () => {
+  let inputHtml: string = '';
+
+  if(props.code) {
+    inputHtml = props.code;
+
+  } else if(input.value) {
+    inputHtml = ((input.value as HTMLElement).children[0] as HTMLTextAreaElement).value;
+  }
+
+  if(inputHtml) {
     let contentFound = false;
     let filtered = inputHtml.split('\n').filter(line => {
       if(contentFound || line.trim() != '') {
@@ -45,7 +65,7 @@ onMounted(() => {
 
     html.value = window.Prism.highlight(inputHtml, window.Prism.languages[(props.lang as keyof any)], (props.lang as string));
   }
-});
+}
 
 const renderedCode = ref("");
 
@@ -86,15 +106,13 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
 <style lang="scss" scoped>
 .code-block {
   @apply text-gray-300 mb-6 relative;
-  
-  &__input {}
 
   &__output {
     @apply bg-slate-700 px-10 py-8 rounded-lg overflow-auto;
   }
 
   .icon {
-      @apply duration-100 text-slate-400 w-4 h-4;
+    @apply duration-100 text-slate-400 w-4 h-4;
   }
 
   &__copy-to-clipboard {
@@ -104,7 +122,7 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
       @apply bg-slate-600;
 
       .icon {
-      @apply text-slate-200;
+        @apply text-slate-200;
       }
     }
   }
