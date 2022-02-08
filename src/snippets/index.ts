@@ -5,7 +5,8 @@ export interface Snippet {
 export interface SnippetData {
     title?: string,
     content?: string,
-    code?: string
+    code?: string,
+    language?: string
 }
 
 const snippets: Array<Snippet> = [];

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Container from './../components/Container.vue';
 import { ref, computed } from "vue";
 import snippets, { Snippet } from "./../snippets";
 import fuzzysort from "fuzzysort";
@@ -12,24 +13,23 @@ const allSnippets = snippets.map(snippet => ({
 
 const search = ref("");
 
-const filteredSnippets = computed(() => search.value == "" ? allSnippets.map(snippet => snippet.snippet) : fuzzysort.go(search.value, allSnippets, {key: "search"}).map(result => result.obj.snippet));
+const filteredSnippets = computed(() => search.value == "" ? [] : fuzzysort.go(search.value, allSnippets, {key: "search"}).map(result => result.obj.snippet));
 
 </script>
 
 <template>
-<div>
-  <input type="text" v-model="search">
-  <article v-for="(snippet, snippetIndex) in filteredSnippets" :v-key="`snippet-${snippetIndex}`">
-    {{snippet.id}}
-    <div v-for="(part, partindex) in snippet.data" :v-key="`part-${partindex}`">
-      {{part.title}}
-      {{part.content}}
-      <CodeBlock v-if="part.code">
-        <textarea>{{part.code}}</textarea>
-      </CodeBlock>
-    </div>
-  </article>
-</div>
+  <Container>
+    <input type="text" v-model="search">
+    <hr>
+    <article v-if="filteredSnippets.length > 0" :v-key="`snippet-${filteredSnippets[0].id}`">
+      <div v-for="(part, partindex) in filteredSnippets[0].data" :v-key="`part-${partindex}`">
+        {{part.title}}
+        {{part.content}}
+        <CodeBlock v-if="part.code" v-bind:lang="part.language" :code="part.code" />
+      </div>
+    <hr>
+    </article>
+  </Container>
 </template>
 
 <style scoped lang="scss">
