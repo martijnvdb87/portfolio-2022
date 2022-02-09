@@ -4,6 +4,7 @@ import './../scripts/prism.js';
 import './../styles/prism.scss';
 
 import Icon from "./Icon.vue";
+import Tooltip from './Tooltip.vue';
 
 import { ref, onMounted, onUpdated } from 'vue';
 
@@ -98,7 +99,9 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
     class="code-block__copy-to-clipboard"
     @click="copyToClipboard"
   >
-    <Icon name="copy" />
+    <Tooltip value="Copy to clipboard" position="left">
+      <Icon name="copy" />
+    </Tooltip>
   </button>
 </div>
 </template>
@@ -108,7 +111,7 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
   @apply text-gray-300 mb-6 relative;
 
   &__output {
-    @apply bg-slate-700 px-10 py-8 rounded-lg overflow-auto;
+    @apply bg-slate-700 px-8 py-6 rounded-lg overflow-auto;
   }
 
   .icon {
@@ -116,7 +119,7 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
   }
 
   &__copy-to-clipboard {
-    @apply w-10 h-10 rounded-lg overflow-auto flex items-center justify-center absolute right-4 top-4 duration-100 transition-all;
+    @apply w-10 h-10 rounded-lg rounded-full flex items-center justify-center absolute right-2 top-2 duration-100 transition-all;
 
     &:hover {
       @apply bg-slate-600;
