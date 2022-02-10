@@ -99,7 +99,7 @@ const copyToClipboard = () => navigator.clipboard.writeText((renderedCode.value 
     class="code-block__copy-to-clipboard"
     @click="copyToClipboard"
   >
-    <Tooltip value="Copy to clipboard" position="left">
+    <Tooltip value="Copy to clipboard" clicked="Copied" position="left">
       <Icon name="copy" />
     </Tooltip>
   </button>
