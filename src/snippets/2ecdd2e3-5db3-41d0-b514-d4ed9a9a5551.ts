@@ -1,5 +1,10 @@
 export default [{
-    title: "Second snippet",
-    content: "Nunc sit amet elit non tellus semper rhoncus nec quis quam. Maecenas eros justo, sodales non pellentesque quis, aliquet non nulla. Suspendisse maximus congue tincidunt.",
-    code: `hkhkjh`
+    title: "Insert in MySQL",
+    language: "sql",
+    code: `
+INSERT INTO \`items\` (\`id\`, \`title\`, \`content\`)
+VALUES
+    (1, "Title", "Content"),
+    (2, "Title", "Content")
+`
 }];

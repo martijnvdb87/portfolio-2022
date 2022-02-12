@@ -1,4 +1,10 @@
 export default [{
-    title: "First snippet",
-    content: "Suspendisse erat magna, molestie vitae magna eget, laoreet aliquet risus. Pellentesque tortor quam, pharetra ut lectus ut, maximus interdum velit."
+    title: "Select in MySQL",
+    language: "sql",
+    code: `
+SELECT \`id\`, \`title\`, \`content\`
+FROM \`items\`
+WHERE \`id\` = 1
+ORDER BY \`id\` DESC
+`
 }];
